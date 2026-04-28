@@ -66,8 +66,8 @@ function Pagos() {
               ) : (
                 pagos.map(p => (
                   <tr key={p.id} style={{ borderBottom: '1px solid #f0f0f0' }}>
-                    <td style={{ padding: '14px 16px', color: '#222' }}>#{p.id?.slice(0, 8)}</td>
-                    <td style={{ padding: '14px 16px', color: '#222' }}>#{p.pedidoId?.slice(0, 8)}</td>
+                    <td style={{ padding: '14px 16px', color: '#222' }}>#{p.id}</td>
+                    <td style={{ padding: '14px 16px', color: '#222' }}>{p.pedidoId}</td>
                     <td style={{ padding: '14px 16px', color: '#27ae60', fontWeight: '600' }}>${p.monto?.toLocaleString()}</td>
                     <td style={{ padding: '14px 16px', color: '#222' }}>{p.metodoPago}</td>
                     <td style={{ padding: '14px 16px', color: '#222' }}>{p.createdAt?.slice(0, 10)}</td>

@@ -51,8 +51,8 @@ function Envios() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <span style={{ fontSize: '20px' }}>🚚</span>
                       <div>
-                        <p style={{ margin: 0, fontWeight: '600', color: '#222', fontSize: '14px' }}>Envío #{e.id?.slice(0, 8)}</p>
-                        <p style={{ margin: 0, fontSize: '12px', color: '#888' }}>Pedido: #{e.pedidoId?.slice(0, 8)}</p>
+                        <p style={{ margin: 0, fontWeight: '600', color: '#222', fontSize: '14px' }}>Envío #{e.id}</p>
+                        <p style={{ margin: 0, fontSize: '12px', color: '#888' }}>Pedido: #{e.pedidoId?.substring(0, 8)}</p>
                       </div>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -64,9 +64,9 @@ function Envios() {
                   {abierto && (
                     <div style={{ borderTop: '1px solid #f0f0f0', padding: '16px 20px' }}>
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-                        <p style={{ margin: 0, fontSize: '13px', color: '#888' }}>Cliente: <span style={{ color: '#222', fontWeight: '600' }}>{e.clienteId}</span></p>
+                        <p style={{ margin: 0, fontSize: '12px', color: '#888' }}>Tracking: {e.trackingNumber}</p>
                         <p style={{ margin: 0, fontSize: '13px', color: '#888' }}>Estado: <span style={{ color: '#222', fontWeight: '600' }}>{e.estado}</span></p>
-                        <p style={{ margin: 0, fontSize: '13px', color: '#888' }}>Fecha: <span style={{ color: '#222', fontWeight: '600' }}>{e.createdAt?.slice(0, 10)}</span></p>
+                        <p style={{ margin: 0, fontSize: '13px', color: '#888' }}>Fecha: <span style={{ color: '#222', fontWeight: '600' }}>{e.fechaCreacion?.slice(0, 10)}</span></p>
                       </div>
                     </div>
                   )}
