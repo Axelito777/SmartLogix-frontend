@@ -19,11 +19,13 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Limpiar cache Docker
-      run: docker system prune -af
+      run: |
+        docker builder prune -af
+        docker system prune -af
 
     - name: Build y Push imagen Frontend
       run: |
-        docker build --no-cache -t ${{ secrets.DOCKERHUB_USERNAME }}/smartlogix-frontend:latest .
+        docker build --no-cache --pull -t ${{ secrets.DOCKERHUB_USERNAME }}/smartlogix-frontend:latest .
         docker push ${{ secrets.DOCKERHUB_USERNAME }}/smartlogix-frontend:latest
 
     - name: Configurar credenciales AWS
