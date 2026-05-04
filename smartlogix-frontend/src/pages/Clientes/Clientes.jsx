@@ -4,6 +4,10 @@ import axios from 'axios'
 import Sidebar from '../../components/Sidebar'
 
 const API = 'http://localhost:8080'
+const card = { background: '#1e2d42', border: '1px solid rgba(0,200,255,0.15)', borderRadius: '12px', overflow: 'hidden' }
+const th = { textAlign: 'left', padding: '12px 16px', color: 'rgba(150,220,255,0.6)', fontWeight: '500', borderBottom: '1px solid rgba(0,200,255,0.12)' }
+const td = { padding: '12px 16px', color: 'rgba(200,240,255,0.9)', borderBottom: '1px solid rgba(0,200,255,0.06)' }
+const input = { padding: '9px 12px', background: 'rgba(0,150,220,0.15)', border: '1px solid rgba(0,200,255,0.25)', borderRadius: '8px', fontSize: '13px', color: '#fff', outline: 'none', width: '100%', boxSizing: 'border-box' }
 
 function Clientes() {
   const [clientes, setClientes] = useState([])
@@ -38,58 +42,54 @@ function Clientes() {
     }
   }
 
-  const inputStyle = { padding: '6px 10px', border: '1px solid #ddd', borderRadius: '6px', fontSize: '13px', outline: 'none', width: '100%', boxSizing: 'border-box' }
-
   return (
-    <div style={{ display: 'flex', height: '100vh', background: '#f4f4f4' }}>
+    <div style={{ display: 'flex', height: '100vh', background: '#1a2332', overflow: 'hidden' }}>
       <Sidebar />
       <div style={{ flex: 1, padding: '2rem', boxSizing: 'border-box', overflowY: 'auto' }}>
-        <div style={{ marginBottom: '1.5rem' }}>
-          <h1 style={{ fontSize: '20px', fontWeight: '700', color: '#222', margin: '0 0 0.25rem' }}>Clientes</h1>
-          <p style={{ fontSize: '13px', color: '#888', margin: 0 }}>Listado de clientes registrados</p>
-        </div>
+        <h1 style={{ fontSize: '22px', fontWeight: '700', color: '#7ef0ff', margin: '0 0 0.25rem' }}>Clientes</h1>
+        <p style={{ fontSize: '13px', color: 'rgba(150,220,255,0.7)', margin: '0 0 1.5rem' }}>Listado de clientes registrados</p>
 
-        <div style={{ background: '#fff', borderRadius: '10px', border: '1px solid #e0e0e0', overflow: 'hidden' }}>
+        <div style={card}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
             <thead>
-              <tr style={{ background: '#f9f9f9', borderBottom: '1px solid #e0e0e0' }}>
-                <th style={{ textAlign: 'left', padding: '14px 16px', color: '#444', fontWeight: '600' }}>Nombre</th>
-                <th style={{ textAlign: 'left', padding: '14px 16px', color: '#444', fontWeight: '600' }}>RUT</th>
-                <th style={{ textAlign: 'left', padding: '14px 16px', color: '#444', fontWeight: '600' }}>Email</th>
-                <th style={{ textAlign: 'left', padding: '14px 16px', color: '#444', fontWeight: '600' }}>Teléfono</th>
-                <th style={{ textAlign: 'left', padding: '14px 16px', color: '#444', fontWeight: '600' }}>Dirección</th>
-                <th style={{ textAlign: 'left', padding: '14px 16px', color: '#444', fontWeight: '600' }}>Acciones</th>
+              <tr style={{ background: 'rgba(0,150,220,0.1)' }}>
+                <th style={th}>Nombre</th>
+                <th style={th}>RUT</th>
+                <th style={th}>Email</th>
+                <th style={th}>Teléfono</th>
+                <th style={th}>Dirección</th>
+                <th style={th}>Acciones</th>
               </tr>
             </thead>
             <tbody>
               {clientes.length === 0 ? (
-                <tr><td colSpan="6" style={{ padding: '2rem', textAlign: 'center', color: '#aaa' }}>No hay clientes registrados</td></tr>
+                <tr><td colSpan="6" style={{ padding: '2rem', textAlign: 'center', color: 'rgba(150,220,255,0.4)' }}>No hay clientes registrados</td></tr>
               ) : (
                 clientes.map(c => (
-                  <tr key={c.id} style={{ borderBottom: '1px solid #f0f0f0' }}>
+                  <tr key={c.id}>
                     {editando === c.id ? (
                       <>
-                        <td style={{ padding: '10px 16px' }}><input name="nombre" value={form.nombre} onChange={e => setForm({...form, nombre: e.target.value})} style={inputStyle} /></td>
-                        <td style={{ padding: '10px 16px' }}><input name="rut" value={form.rut} onChange={e => setForm({...form, rut: e.target.value})} style={inputStyle} /></td>
-                        <td style={{ padding: '10px 16px' }}><input name="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} style={inputStyle} /></td>
-                        <td style={{ padding: '10px 16px' }}><input name="telefono" value={form.telefono} onChange={e => setForm({...form, telefono: e.target.value})} style={inputStyle} /></td>
-                        <td style={{ padding: '10px 16px' }}><input name="direccion" value={form.direccion} onChange={e => setForm({...form, direccion: e.target.value})} style={inputStyle} /></td>
-                        <td style={{ padding: '10px 16px' }}>
+                        <td style={td}><input value={form.nombre} onChange={e => setForm({...form, nombre: e.target.value})} style={input} /></td>
+                        <td style={td}><input value={form.rut} onChange={e => setForm({...form, rut: e.target.value})} style={input} /></td>
+                        <td style={td}><input value={form.email} onChange={e => setForm({...form, email: e.target.value})} style={input} /></td>
+                        <td style={td}><input value={form.telefono} onChange={e => setForm({...form, telefono: e.target.value})} style={input} /></td>
+                        <td style={td}><input value={form.direccion} onChange={e => setForm({...form, direccion: e.target.value})} style={input} /></td>
+                        <td style={td}>
                           <div style={{ display: 'flex', gap: '8px' }}>
-                            <button onClick={() => handleGuardar(c.id)} style={{ padding: '6px 12px', background: '#222', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '12px' }}>Guardar</button>
-                            <button onClick={() => setEditando(null)} style={{ padding: '6px 12px', background: '#f0f0f0', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '12px' }}>Cancelar</button>
+                            <button onClick={() => handleGuardar(c.id)} style={{ padding: '6px 12px', background: 'rgba(0,160,220,0.4)', border: '1px solid rgba(0,200,255,0.4)', borderRadius: '8px', color: '#7ef0ff', fontSize: '12px', cursor: 'pointer' }}>Guardar</button>
+                            <button onClick={() => setEditando(null)} style={{ padding: '6px 12px', background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '8px', color: 'rgba(200,240,255,0.8)', fontSize: '12px', cursor: 'pointer' }}>Cancelar</button>
                           </div>
                         </td>
                       </>
                     ) : (
                       <>
-                        <td style={{ padding: '14px 16px', color: '#222' }}>{c.nombre}</td>
-                        <td style={{ padding: '14px 16px', color: '#222' }}>{c.rut}</td>
-                        <td style={{ padding: '14px 16px', color: '#222' }}>{c.email}</td>
-                        <td style={{ padding: '14px 16px', color: '#222' }}>{c.telefono}</td>
-                        <td style={{ padding: '14px 16px', color: '#222' }}>{c.direccion}</td>
-                        <td style={{ padding: '14px 16px' }}>
-                          <button onClick={() => handleEditar(c)} style={{ padding: '6px 12px', background: '#f0f0f0', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '12px' }}>Editar</button>
+                        <td style={td}>{c.nombre}</td>
+                        <td style={td}>{c.rut}</td>
+                        <td style={td}>{c.email}</td>
+                        <td style={td}>{c.telefono}</td>
+                        <td style={td}>{c.direccion}</td>
+                        <td style={td}>
+                          <button onClick={() => handleEditar(c)} style={{ padding: '6px 12px', background: 'rgba(0,150,220,0.2)', border: '1px solid rgba(0,200,255,0.3)', borderRadius: '8px', color: '#7ef0ff', fontSize: '12px', cursor: 'pointer' }}>Editar</button>
                         </td>
                       </>
                     )}

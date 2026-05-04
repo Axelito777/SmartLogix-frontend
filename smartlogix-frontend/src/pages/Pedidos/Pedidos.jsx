@@ -32,23 +32,21 @@ function Pedidos() {
   }
 
   const estadoBadge = (estado) => {
-    if (estado === 'ENTREGADO') return { background: '#e8f5e9', color: '#27ae60', texto: '✅ ENTREGADO' }
-    if (estado === 'EN_PROCESO') return { background: '#fff3e0', color: '#e67e22', texto: '🔄 EN PROCESO' }
-    return { background: '#fce4ec', color: '#c0392b', texto: '⏳ PENDIENTE' }
+    if (estado === 'ENTREGADO') return { bg: 'rgba(0,200,100,0.2)', color: '#7effc0', border: 'rgba(0,200,100,0.3)', texto: '✅ ENTREGADO' }
+    if (estado === 'EN_PROCESO') return { bg: 'rgba(255,200,0,0.2)', color: '#ffe999', border: 'rgba(255,200,0,0.3)', texto: '🔄 EN PROCESO' }
+    return { bg: 'rgba(255,80,80,0.2)', color: '#ffbbbb', border: 'rgba(255,80,80,0.3)', texto: '⏳ PENDIENTE' }
   }
 
   return (
-    <div style={{ display: 'flex', height: '100vh', background: '#f4f4f4' }}>
+    <div style={{ display: 'flex', height: '100vh', background: '#1a2332', overflow: 'hidden' }}>
       <Sidebar />
       <div style={{ flex: 1, padding: '2rem', boxSizing: 'border-box', overflowY: 'auto' }}>
-        <div style={{ marginBottom: '1.5rem' }}>
-          <h1 style={{ fontSize: '20px', fontWeight: '700', color: '#222', margin: '0 0 0.25rem' }}>Pedidos</h1>
-          <p style={{ fontSize: '13px', color: '#888', margin: 0 }}>Gestión de pedidos recibidos</p>
-        </div>
+        <h1 style={{ fontSize: '22px', fontWeight: '700', color: '#7ef0ff', margin: '0 0 0.25rem' }}>Pedidos</h1>
+        <p style={{ fontSize: '13px', color: 'rgba(150,220,255,0.7)', margin: '0 0 1.5rem' }}>Gestión de pedidos recibidos</p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {pedidos.length === 0 ? (
-            <div style={{ background: '#fff', borderRadius: '10px', border: '1px solid #e0e0e0', padding: '2rem', textAlign: 'center', color: '#aaa' }}>
+            <div style={{ background: '#1e2d42', border: '1px solid rgba(0,200,255,0.15)', borderRadius: '12px', padding: '2rem', textAlign: 'center', color: 'rgba(150,220,255,0.4)' }}>
               No hay pedidos registrados
             </div>
           ) : (
@@ -56,7 +54,7 @@ function Pedidos() {
               const badge = estadoBadge(p.estado)
               const abierto = expandido === p.id
               return (
-                <div key={p.id} style={{ background: '#fff', borderRadius: '10px', border: '1px solid #e0e0e0', overflow: 'hidden' }}>
+                <div key={p.id} style={{ background: '#1e2d42', border: '1px solid rgba(0,200,255,0.15)', borderRadius: '12px', overflow: 'hidden' }}>
                   <div
                     onClick={() => setExpandido(abierto ? null : p.id)}
                     style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 20px', cursor: 'pointer' }}
@@ -64,28 +62,27 @@ function Pedidos() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                       <span style={{ fontSize: '20px' }}>📦</span>
                       <div>
-                        <p style={{ margin: 0, fontWeight: '600', color: '#222', fontSize: '14px' }}>Pedido #{p.id?.slice(0, 8)}</p>
-                        <p style={{ margin: 0, fontSize: '12px', color: '#888' }}>Cliente: {p.clienteId}</p>
+                        <p style={{ margin: 0, fontWeight: '600', color: '#7ef0ff', fontSize: '14px' }}>Pedido #{p.id?.slice(0, 8)}</p>
+                        <p style={{ margin: 0, fontSize: '12px', color: 'rgba(150,220,255,0.6)' }}>Cliente: {p.clienteId}</p>
                       </div>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <span style={{ ...badge, padding: '4px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '600' }}>{badge.texto}</span>
-                      <span style={{ color: '#888', fontSize: '18px' }}>{abierto ? '▲' : '▼'}</span>
+                      <span style={{ background: badge.bg, color: badge.color, border: `1px solid ${badge.border}`, padding: '4px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: '600' }}>{badge.texto}</span>
+                      <span style={{ color: 'rgba(150,220,255,0.5)', fontSize: '18px' }}>{abierto ? '▲' : '▼'}</span>
                     </div>
                   </div>
 
                   {abierto && (
-                    <div style={{ borderTop: '1px solid #f0f0f0', padding: '16px 20px' }}>
+                    <div style={{ borderTop: '1px solid rgba(0,200,255,0.1)', padding: '16px 20px' }}>
                       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '1rem' }}>
-                        <p style={{ margin: 0, fontSize: '13px', color: '#888' }}>Total: <span style={{ color: '#222', fontWeight: '600' }}>${p.total}</span></p>
-                        <p style={{ margin: 0, fontSize: '13px', color: '#888' }}>Tipo: <span style={{ color: '#222', fontWeight: '600' }}>{p.tipo}</span></p>
-                        <p style={{ margin: 0, fontSize: '13px', color: '#888' }}>Fecha: <span style={{ color: '#222', fontWeight: '600' }}>{p.createdAt?.slice(0, 10)}</span></p>
+                        <p style={{ margin: 0, fontSize: '13px', color: 'rgba(150,220,255,0.6)' }}>Total: <span style={{ color: '#7ef0ff', fontWeight: '600' }}>${p.total}</span></p>
+                        <p style={{ margin: 0, fontSize: '13px', color: 'rgba(150,220,255,0.6)' }}>Tipo: <span style={{ color: '#7ef0ff', fontWeight: '600' }}>{p.tipo}</span></p>
+                        <p style={{ margin: 0, fontSize: '13px', color: 'rgba(150,220,255,0.6)' }}>Fecha: <span style={{ color: '#7ef0ff', fontWeight: '600' }}>{p.createdAt?.slice(0, 10)}</span></p>
                       </div>
-
                       {p.estado !== 'ENTREGADO' && (
                         <button
                           onClick={() => handleDespachar(p.id)}
-                          style={{ padding: '10px 24px', background: '#222', color: '#fff', border: 'none', borderRadius: '8px', fontSize: '14px', fontWeight: '500', cursor: 'pointer' }}
+                          style={{ padding: '10px 24px', background: 'rgba(0,160,220,0.4)', border: '1px solid rgba(0,200,255,0.4)', borderRadius: '8px', color: '#7ef0ff', fontSize: '14px', fontWeight: '500', cursor: 'pointer' }}
                         >
                           Despachar
                         </button>

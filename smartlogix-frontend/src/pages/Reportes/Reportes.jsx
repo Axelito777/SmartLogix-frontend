@@ -5,6 +5,8 @@ import Sidebar from '../../components/Sidebar'
 
 const API = 'http://localhost:8080'
 
+const card = { background: '#1e2d42', border: '1px solid rgba(0,200,255,0.15)', borderRadius: '12px', overflow: 'hidden' }
+
 function Reportes() {
   const [reporteVentas, setReporteVentas] = useState(null)
   const [reporteInventario, setReporteInventario] = useState(null)
@@ -49,59 +51,61 @@ function Reportes() {
     setLoadingInventario(false)
   }
 
-  const fila = (label, valor, color = '#222') => (
-    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px', background: '#f9f9f9', borderRadius: '8px' }}>
-      <span style={{ fontSize: '13px', color: '#888' }}>{label}</span>
+  const fila = (label, valor, color = 'rgba(200,240,255,0.9)') => (
+    <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 12px', background: 'rgba(0,150,220,0.08)', borderRadius: '8px', border: '1px solid rgba(0,200,255,0.08)' }}>
+      <span style={{ fontSize: '13px', color: 'rgba(150,220,255,0.6)' }}>{label}</span>
       <span style={{ fontSize: '13px', fontWeight: '600', color }}>{valor}</span>
     </div>
   )
 
   return (
-    <div style={{ display: 'flex', height: '100vh', background: '#f4f4f4' }}>
+    <div style={{ display: 'flex', height: '100vh', background: '#1a2332', overflow: 'hidden' }}>
       <Sidebar />
       <div style={{ flex: 1, padding: '2rem', boxSizing: 'border-box', overflowY: 'auto' }}>
-        <div style={{ marginBottom: '1.5rem' }}>
-          <h1 style={{ fontSize: '20px', fontWeight: '700', color: '#222', margin: '0 0 0.25rem' }}>Reportes</h1>
-          <p style={{ fontSize: '13px', color: '#888', margin: 0 }}>Resumen de ventas e inventario</p>
-        </div>
+        <h1 style={{ fontSize: '22px', fontWeight: '700', color: '#7ef0ff', margin: '0 0 0.25rem' }}>Reportes</h1>
+        <p style={{ fontSize: '13px', color: 'rgba(150,220,255,0.7)', margin: '0 0 1.5rem' }}>Resumen de ventas e inventario</p>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-          <div style={{ background: '#fff', borderRadius: '10px', border: '1px solid #e0e0e0', padding: '1.5rem' }}>
+
+          {/* Reporte Ventas */}
+          <div style={{ ...card, padding: '1.5rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-              <h2 style={{ fontSize: '16px', fontWeight: '600', color: '#222', margin: 0 }}>📊 Reporte de Ventas</h2>
-              <button onClick={generarVentas} style={{ padding: '7px 14px', background: '#222', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '13px', cursor: 'pointer' }}>
+              <h2 style={{ fontSize: '16px', fontWeight: '600', color: '#7ef0ff', margin: 0 }}>📊 Reporte de Ventas</h2>
+              <button onClick={generarVentas} style={{ padding: '7px 14px', background: 'rgba(0,160,220,0.35)', border: '1px solid rgba(0,200,255,0.35)', borderRadius: '8px', color: '#7ef0ff', fontSize: '13px', fontWeight: '500', cursor: 'pointer' }}>
                 {loadingVentas ? 'Generando...' : 'Generar'}
               </button>
             </div>
             {reporteVentas ? (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {fila('Total ventas', `$${reporteVentas.total.toLocaleString()}`, '#27ae60')}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {fila('Total ventas', `$${reporteVentas.total.toLocaleString()}`, '#2ecc71')}
                 {fila('Pedidos completados', reporteVentas.completados)}
                 {fila('Ticket promedio', `$${Math.round(reporteVentas.promedio).toLocaleString()}`)}
-                {fila('Pedidos pendientes', reporteVentas.pendientes, '#c0392b')}
+                {fila('Pedidos pendientes', reporteVentas.pendientes, '#e74c3c')}
               </div>
             ) : (
-              <p style={{ color: '#aaa', fontSize: '13px', textAlign: 'center', marginTop: '2rem' }}>Presiona Generar para ver el reporte</p>
+              <p style={{ color: 'rgba(150,220,255,0.35)', fontSize: '13px', textAlign: 'center', marginTop: '2rem' }}>Presiona Generar para ver el reporte</p>
             )}
           </div>
 
-          <div style={{ background: '#fff', borderRadius: '10px', border: '1px solid #e0e0e0', padding: '1.5rem' }}>
+          {/* Reporte Inventario */}
+          <div style={{ ...card, padding: '1.5rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-              <h2 style={{ fontSize: '16px', fontWeight: '600', color: '#222', margin: 0 }}>📦 Reporte de Inventario</h2>
-              <button onClick={generarInventario} style={{ padding: '7px 14px', background: '#222', color: '#fff', border: 'none', borderRadius: '6px', fontSize: '13px', cursor: 'pointer' }}>
+              <h2 style={{ fontSize: '16px', fontWeight: '600', color: '#7ef0ff', margin: 0 }}>📦 Reporte de Inventario</h2>
+              <button onClick={generarInventario} style={{ padding: '7px 14px', background: 'rgba(0,160,220,0.35)', border: '1px solid rgba(0,200,255,0.35)', borderRadius: '8px', color: '#7ef0ff', fontSize: '13px', fontWeight: '500', cursor: 'pointer' }}>
                 {loadingInventario ? 'Generando...' : 'Generar'}
               </button>
             </div>
             {reporteInventario ? (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {fila('Total productos', reporteInventario.total)}
-                {fila('Productos bajo stock', reporteInventario.bajoStock, '#c0392b')}
+                {fila('Productos bajo stock', reporteInventario.bajoStock, '#e74c3c')}
                 {fila('Valor total inventario', `$${reporteInventario.valorTotal.toLocaleString()}`)}
               </div>
             ) : (
-              <p style={{ color: '#aaa', fontSize: '13px', textAlign: 'center', marginTop: '2rem' }}>Presiona Generar para ver el reporte</p>
+              <p style={{ color: 'rgba(150,220,255,0.35)', fontSize: '13px', textAlign: 'center', marginTop: '2rem' }}>Presiona Generar para ver el reporte</p>
             )}
           </div>
+
         </div>
       </div>
     </div>

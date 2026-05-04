@@ -19,7 +19,7 @@ function Sidebar() {
   return (
     <div style={{
       width: '220px',
-      background: 'linear-gradient(180deg, #1a6b9a 0%, #2eb8c8 50%, #4dd9a0 100%)',
+      background: 'linear-gradient(180deg, #0a1628 0%, #0d2d4a 50%, #0a3d3a 100%)',
       height: '100vh',
       display: 'flex',
       flexDirection: 'column',
@@ -28,14 +28,15 @@ function Sidebar() {
       flexShrink: 0,
       position: 'relative',
       overflow: 'hidden',
-      boxShadow: '4px 0 20px rgba(0,100,180,0.3)'
+      borderRight: '1px solid rgba(0,200,255,0.15)',
+      boxShadow: '4px 0 20px rgba(0,0,0,0.4)'
     }}>
-      <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '150px', height: '150px', background: 'radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%)', borderRadius: '50%' }} />
-      <div style={{ position: 'absolute', bottom: '-40px', left: '-40px', width: '150px', height: '150px', background: 'radial-gradient(circle, rgba(100,220,255,0.15) 0%, transparent 70%)', borderRadius: '50%' }} />
+      <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '150px', height: '150px', background: 'radial-gradient(circle, rgba(0,180,220,0.15) 0%, transparent 70%)', borderRadius: '50%' }} />
+      <div style={{ position: 'absolute', bottom: '-40px', left: '-40px', width: '150px', height: '150px', background: 'radial-gradient(circle, rgba(0,220,150,0.1) 0%, transparent 70%)', borderRadius: '50%' }} />
 
       <div style={{ padding: '0 1.5rem', marginBottom: '2rem', position: 'relative' }}>
-        <div style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,255,255,0.1))', border: '1px solid rgba(255,255,255,0.5)', borderRadius: '12px', padding: '8px 12px', textAlign: 'center' }}>
-          <p style={{ color: '#fff', fontSize: '16px', fontWeight: '700', letterSpacing: '0.1em', margin: 0, textShadow: '0 1px 4px rgba(0,100,150,0.4)' }}>SMARTLOGIX</p>
+        <div style={{ background: 'linear-gradient(135deg, rgba(0,180,220,0.3), rgba(0,100,180,0.2))', border: '1px solid rgba(0,200,255,0.4)', borderRadius: '12px', padding: '8px 12px', textAlign: 'center' }}>
+          <p style={{ color: '#7ef0ff', fontSize: '15px', fontWeight: '700', letterSpacing: '0.1em', margin: 0, textShadow: '0 0 15px rgba(0,200,255,0.4)' }}>SMARTLOGIX</p>
         </div>
       </div>
 
@@ -47,18 +48,18 @@ function Sidebar() {
               key={item.path}
               onClick={() => navigate(item.path)}
               style={{
-                color: activo ? '#fff' : 'rgba(255,255,255,0.75)',
+                color: activo ? '#7ef0ff' : 'rgba(150,220,255,0.65)',
                 fontSize: '14px',
                 padding: '11px 1.5rem',
                 cursor: 'pointer',
-                background: activo ? 'linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,255,255,0.15))' : 'transparent',
+                background: activo ? 'linear-gradient(135deg, rgba(0,150,220,0.3), rgba(0,100,180,0.2))' : 'transparent',
                 borderRadius: '10px',
                 margin: '0 8px',
                 fontWeight: activo ? '600' : '400',
-                border: activo ? '1px solid rgba(255,255,255,0.4)' : '1px solid transparent',
-                textShadow: activo ? '0 1px 3px rgba(0,80,150,0.4)' : 'none',
+                border: activo ? '1px solid rgba(0,200,255,0.3)' : '1px solid transparent',
+                textShadow: activo ? '0 0 10px rgba(0,200,255,0.4)' : 'none',
                 transition: 'all 0.2s ease',
-                boxShadow: activo ? 'inset 0 1px 0 rgba(255,255,255,0.4)' : 'none'
+                boxShadow: activo ? 'inset 0 1px 0 rgba(0,200,255,0.2)' : 'none'
               }}
             >
               {item.label}

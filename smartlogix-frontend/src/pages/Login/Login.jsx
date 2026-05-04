@@ -27,7 +27,7 @@ function Login() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #1a6b9a 0%, #2eb8c8 30%, #4dd9a0 60%, #7ef0b8 100%)',
+      background: 'linear-gradient(135deg, #0a1628 0%, #0d2d4a 30%, #0a3d3a 60%, #0d2d1e 100%)',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -36,26 +36,26 @@ function Login() {
       position: 'relative',
       overflow: 'hidden'
     }}>
-      <div style={{ position: 'absolute', top: '-80px', right: '-80px', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%)', borderRadius: '50%' }} />
-      <div style={{ position: 'absolute', bottom: '-60px', left: '-60px', width: '250px', height: '250px', background: 'radial-gradient(circle, rgba(100,220,255,0.2) 0%, transparent 70%)', borderRadius: '50%' }} />
+      <div style={{ position: 'absolute', top: '-80px', right: '-80px', width: '300px', height: '300px', background: 'radial-gradient(circle, rgba(0,180,220,0.15) 0%, transparent 70%)', borderRadius: '50%' }} />
+      <div style={{ position: 'absolute', bottom: '-60px', left: '-60px', width: '250px', height: '250px', background: 'radial-gradient(circle, rgba(0,220,150,0.1) 0%, transparent 70%)', borderRadius: '50%' }} />
 
       <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <div style={{ display: 'inline-block', background: 'linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1))', border: '1px solid rgba(255,255,255,0.5)', borderRadius: '16px', padding: '8px 24px', marginBottom: '0.5rem' }}>
-          <span style={{ color: '#fff', fontSize: '22px', fontWeight: '700', letterSpacing: '0.15em', textShadow: '0 1px 4px rgba(0,100,150,0.4)' }}>SMARTLOGIX</span>
+        <div style={{ display: 'inline-block', background: 'linear-gradient(135deg, rgba(0,180,220,0.3), rgba(0,100,180,0.2))', border: '1px solid rgba(0,200,255,0.4)', borderRadius: '16px', padding: '8px 24px', marginBottom: '0.5rem' }}>
+          <span style={{ color: '#7ef0ff', fontSize: '22px', fontWeight: '700', letterSpacing: '0.15em', textShadow: '0 0 20px rgba(0,200,255,0.5)' }}>SMARTLOGIX</span>
         </div>
-        <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '13px', margin: 0, textShadow: '0 1px 3px rgba(0,80,120,0.4)' }}>Sistema de gestión logística</p>
+        <p style={{ color: 'rgba(150,220,255,0.7)', fontSize: '13px', margin: 0 }}>Sistema de gestión logística</p>
       </div>
 
       <div style={{
         width: '100%',
         maxWidth: '380px',
-        background: 'linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.15) 100%)',
-        border: '1px solid rgba(255,255,255,0.5)',
+        background: 'linear-gradient(135deg, rgba(0,40,80,0.7) 0%, rgba(0,60,60,0.6) 100%)',
+        border: '1px solid rgba(0,200,255,0.25)',
         borderRadius: '20px',
         padding: '2rem',
-        boxShadow: '0 8px 32px rgba(0,100,180,0.2), inset 0 1px 0 rgba(255,255,255,0.6)'
+        boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(0,200,255,0.2)'
       }}>
-        <h2 style={{ color: '#fff', fontSize: '15px', fontWeight: '600', letterSpacing: '0.1em', margin: '0 0 1.5rem', textAlign: 'center', textShadow: '0 1px 4px rgba(0,80,150,0.5)' }}>INICIO DE SESIÓN</h2>
+        <h2 style={{ color: '#7ef0ff', fontSize: '15px', fontWeight: '600', letterSpacing: '0.1em', margin: '0 0 1.5rem', textAlign: 'center' }}>INICIO DE SESIÓN</h2>
 
         <div style={{ marginBottom: '1rem' }}>
           <input
@@ -63,7 +63,7 @@ function Login() {
             placeholder="Correo electrónico"
             value={email}
             onChange={e => setEmail(e.target.value)}
-            style={{ width: '100%', padding: '12px 14px', background: 'rgba(255,255,255,0.4)', border: '1px solid rgba(255,255,255,0.6)', borderRadius: '10px', fontSize: '14px', color: '#fff', outline: 'none', boxSizing: 'border-box' }}
+            style={{ width: '100%', padding: '12px 14px', background: 'rgba(0,150,220,0.15)', border: '1px solid rgba(0,200,255,0.3)', borderRadius: '10px', fontSize: '14px', color: '#fff', outline: 'none', boxSizing: 'border-box' }}
           />
         </div>
 
@@ -73,15 +73,15 @@ function Login() {
             placeholder="Contraseña"
             value={password}
             onChange={e => setPassword(e.target.value)}
-            style={{ width: '100%', padding: '12px 14px', background: 'rgba(255,255,255,0.4)', border: '1px solid rgba(255,255,255,0.6)', borderRadius: '10px', fontSize: '14px', color: '#fff', outline: 'none', boxSizing: 'border-box' }}
+            style={{ width: '100%', padding: '12px 14px', background: 'rgba(0,150,220,0.15)', border: '1px solid rgba(0,200,255,0.3)', borderRadius: '10px', fontSize: '14px', color: '#fff', outline: 'none', boxSizing: 'border-box' }}
           />
         </div>
 
-        {error && <p style={{ color: '#ffdddd', fontSize: '13px', margin: '0 0 1rem', textAlign: 'center' }}>{error}</p>}
+        {error && <p style={{ color: '#ff9999', fontSize: '13px', margin: '0 0 1rem', textAlign: 'center' }}>{error}</p>}
 
         <button
           onClick={handleLogin}
-          style={{ width: '100%', padding: '13px', background: 'linear-gradient(135deg, rgba(0,160,220,0.8), rgba(0,100,180,0.9))', border: '1px solid rgba(255,255,255,0.4)', borderRadius: '10px', color: '#fff', fontSize: '14px', fontWeight: '600', cursor: 'pointer', textShadow: '0 1px 3px rgba(0,60,120,0.5)', boxShadow: '0 4px 15px rgba(0,100,200,0.3), inset 0 1px 0 rgba(255,255,255,0.3)' }}
+          style={{ width: '100%', padding: '13px', background: 'linear-gradient(135deg, rgba(0,160,220,0.7), rgba(0,80,180,0.8))', border: '1px solid rgba(0,200,255,0.4)', borderRadius: '10px', color: '#7ef0ff', fontSize: '14px', fontWeight: '600', cursor: 'pointer', boxShadow: '0 4px 20px rgba(0,150,255,0.3)' }}
         >
           Ingresar
         </button>
