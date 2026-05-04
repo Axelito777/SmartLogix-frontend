@@ -18,11 +18,13 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+    - name: Limpiar cache Docker
+      run: docker system prune -af
+
     - name: Build y Push imagen Frontend
       run: |
-        docker build --no-cache -t ${{ secrets.DOCKERHUB_USERNAME }}/smartlogix-frontend:latest ./smartlogix-frontend
+        docker build --no-cache -t ${{ secrets.DOCKERHUB_USERNAME }}/smartlogix-frontend:latest .
         docker push ${{ secrets.DOCKERHUB_USERNAME }}/smartlogix-frontend:latest
-
 
     - name: Configurar credenciales AWS
       uses: aws-actions/configure-aws-credentials@v4
