@@ -20,7 +20,7 @@ jobs:
 
     - name: Build y Push imagen Frontend
       run: |
-        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/smartlogix-frontend:latest .
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/smartlogix-frontend:latest ./smartlogix-frontend
         docker push ${{ secrets.DOCKERHUB_USERNAME }}/smartlogix-frontend:latest
 
     - name: Configurar credenciales AWS
